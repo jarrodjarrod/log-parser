@@ -1,9 +1,6 @@
 # README
 
-This is a command line tool (CLI) for getting a couple simple but useful metrics in HTTP logs
-files that follow the Common and Combined Log Formats. It takes in a log file and an optional
-number (t) of top results to display, returning the top t (3 by default) IP addresses and URLs
-that appear in the logs, along with the number of times they appear in the log.
+This is a command line interface (CLI) for getting a couple simple but useful metrics from HTTP logs that follow the Common and Combined Log Formats. It takes in a file of logs and an optional number (t) of top results to display, returning the top t (3 by default) IP addresses and URLs that appeared in the logs, along with their counts.
 
 ## Installation
 
@@ -11,17 +8,18 @@ npm install <package-name>
 
 ## Usage
 
-http-log-parser -f <file> -t <top>
-
+log-parser -f <file> -t <top>
 
 - `-f, --file`: The HTTP log file to parse. This option is required.
 - `-t, --top`: The number of top results to display. This option is optional, and the default value is 3.
 
 The tool will output the top IP addresses and URLs from the log file, along with the number of times they appear in the log.
 
+HINT: Use `npx @code-slice/log-parser -f <file> -t <top>` to execute the package without installing.
+
 ## Example
 
-parse-log -f access.log -t 5
+log-parser -f access.log -t 5
 
 
 This will parse the `access.log` file and display the top 5 IP addresses and URLs that were recorded, along with a count of their occurrences.
