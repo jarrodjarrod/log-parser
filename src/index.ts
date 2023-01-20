@@ -3,20 +3,10 @@
 import chalk from 'chalk';
 import { once } from 'events';
 import { createReadStream } from 'fs';
-import { join } from 'path';
+import { resolve } from 'path';
 import { createInterface } from 'readline';
 import { hideBin } from 'yargs/helpers';
 import yargs from 'yargs/yargs';
-
-// const { f } = yargs(hideBin(process.argv))
-//   .usage('Usage: -f <file>')
-//   .option('f', {
-//     alias: 'file',
-//     demandOption: true,
-//     describe: 'HTTP log file to parse',
-//     type: 'string',
-//   })
-//   .parseSync();
 
 const { f, t } = yargs(hideBin(process.argv))
   .usage('Usage: -f <file>')
@@ -29,6 +19,7 @@ const { f, t } = yargs(hideBin(process.argv))
     },
     t: {
       alias: 'top',
+      default: 3,
       demandOption: false,
       describe: 'Number of top results to display',
       type: 'number',
@@ -36,7 +27,7 @@ const { f, t } = yargs(hideBin(process.argv))
   })
   .parseSync();
 
-const file = join(process.cwd(), f);
+const file = resolve(process.cwd(), f);
 
 interface ProcessLineParams {
   line: string;
@@ -67,7 +58,7 @@ export function displayTopNResults(n: number, ...maps: Map<string, number>[]) {
   });
 }
 
-export async function processLineByLine(filePath: string, n = 3) {
+export async function processLineByLine(filePath: string, n: number) {
   try {
     const fileStream = createReadStream(filePath, { encoding: 'utf8' });
     const ipMap = new Map<string, number>();
