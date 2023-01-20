@@ -5,7 +5,10 @@
   "type": "module",
   "main": "bin/index.js",
   "scripts": {
-    "test": "tsc && node ./dist/index.js --file './example.log' --top 5"
+    "build": "tsc",
+    "clean": "rm -rf ./dist",
+    "build:clean": "npm-run-all --silent clean build",
+    "test": "node ./dist/index.js --file './example.log' --top 5"
   },
   "author": "Jarrod Membrey",
   "license": "MIT",
@@ -21,7 +24,8 @@
     "eslint": "^8.32.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
-    "typescript": "^4.9.4"
+    "typescript": "^4.9.4",
+    "npm-run-all": "^4.1.5"
   },
   "bin": {
     "parse-log": "./dist/index.js"
