@@ -1,5 +1,5 @@
 {
-  "name": "log-parser",
+  "name": "@code-slice/log-parser",
   "version": "1.0.0",
   "description": "A CLI tool for analysing the IPs and URLs that appear in HTTP log files",
   "type": "module",
@@ -24,11 +24,11 @@
     "typescript": "^4.9.4"
   },
   "bin": {
-    "log-parser": "./dist/index.js"
+    "parse-log": "./dist/index.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jarrodjarrod/log-parser-cli"
+    "url": "https://github.com/jarrodjarrod/log-parser"
   },
-  "homepage": "https://github.com/jarrodjarrod/log-parser-cli"
+  "homepage": "https://github.com/jarrodjarrod/log-parser"
 }

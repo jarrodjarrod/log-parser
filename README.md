@@ -8,7 +8,7 @@ npm install <package-name>
 
 ## Usage
 
-log-parser -f <file> -t <top>
+parse-log -f <file> -t <top>
 
 - `-f, --file`: The HTTP log file to parse. This option is required.
 - `-t, --top`: The number of top results to display. This option is optional, and the default value is 3.
@@ -19,7 +19,7 @@ HINT: Use `npx @code-slice/log-parser -f <file> -t <top>` to execute the package
 
 ## Example
 
-log-parser -f access.log -t 5
+parse-log -f access.log -t 5
 
 
 This will parse the `access.log` file and display the top 5 IP addresses and URLs that were recorded, along with a count of their occurrences.
