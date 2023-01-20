@@ -8,13 +8,31 @@ import { createInterface } from 'readline';
 import { hideBin } from 'yargs/helpers';
 import yargs from 'yargs/yargs';
 
-const { f } = yargs(hideBin(process.argv))
+// const { f } = yargs(hideBin(process.argv))
+//   .usage('Usage: -f <file>')
+//   .option('f', {
+//     alias: 'file',
+//     demandOption: true,
+//     describe: 'HTTP log file to parse',
+//     type: 'string',
+//   })
+//   .parseSync();
+
+const { f, t } = yargs(hideBin(process.argv))
   .usage('Usage: -f <file>')
-  .option('f', {
-    alias: 'file',
-    demandOption: true,
-    describe: 'HTTP log file to parse',
-    type: 'string',
+  .options({
+    f: {
+      alias: 'file',
+      demandOption: true,
+      describe: 'HTTP log file to parse',
+      type: 'string',
+    },
+    t: {
+      alias: 'top',
+      demandOption: false,
+      describe: 'Number of top results to display',
+      type: 'number',
+    },
   })
   .parseSync();
 
@@ -40,7 +58,7 @@ export function displayTopNResults(n: number, ...maps: Map<string, number>[]) {
   [...maps].forEach((map) => {
     const topN = [...map.entries()].sort((a, b) => b[1] - a[1]).slice(0, n);
 
-    console.log(chalk.bold.green(`Top ${n <= map.size ? n : map.size} out of ${map.size}`));
+    console.log(chalk.bold.green(`Top ${n <= map.size ? n : map.size} out of ${map.size} results`));
     console.log(chalk.bold.green('-------------------------------'));
     topN.forEach(([key, value], index) => {
       console.log(`${chalk.bold.yellow(index + 1)}. ${chalk.bold.cyan(key)} -- ${chalk.bold.magenta(`count = ${value}`)}`);
@@ -49,7 +67,7 @@ export function displayTopNResults(n: number, ...maps: Map<string, number>[]) {
   });
 }
 
-export async function processLineByLine(filePath: string) {
+export async function processLineByLine(filePath: string, n = 3) {
   try {
     const fileStream = createReadStream(filePath, { encoding: 'utf8' });
     const ipMap = new Map<string, number>();
@@ -64,10 +82,10 @@ export async function processLineByLine(filePath: string) {
 
     await once(rl, 'close');
 
-    displayTopNResults(28, ipMap, urlMap);
+    displayTopNResults(n, ipMap, urlMap);
   } catch (error) {
     console.error(error);
   }
 }
 
-processLineByLine(file);
+processLineByLine(file, t);

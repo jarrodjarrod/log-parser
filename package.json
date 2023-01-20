@@ -1,11 +1,11 @@
 {
-  "name": "ip-cli",
+  "name": "log-parser-cli",
   "version": "1.0.0",
   "description": "A CLI tool for analysing IP addresses in HTTP log files",
   "type": "module",
   "main": "bin/index.js",
   "scripts": {
-    "test": "tsc && node ./bin/index.js --file './programming-task-example-data.log' "
+    "test": "tsc && node ./dist/index.js --file './programming-task-example-data.log' -t 0"
   },
   "author": "Jarrod Membrey",
   "license": "MIT",
@@ -22,5 +22,8 @@
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
     "typescript": "^4.9.4"
+  },
+  "bin": {
+    "http-cli": "./dist/index.js"
   }
 }
