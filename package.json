@@ -8,13 +8,15 @@
     "build": "tsc",
     "clean": "rm -rf ./dist",
     "build:clean": "npm-run-all --silent clean build",
-    "test": "node ./dist/index.js --file './example.log' --top 5"
+    "example": "node ./dist/index.js --file ./fixtures/example.log",
+    "test": "vitest"
   },
   "author": "Jarrod Membrey",
   "license": "MIT",
   "dependencies": {
     "chalk": "^5.2.0",
-    "yargs": "^17.6.2"
+    "yargs": "^17.6.2",
+    "vitest": "^0.27.2"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
@@ -24,11 +26,11 @@
     "eslint": "^8.32.0",
     "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.27.5",
-    "typescript": "^4.9.4",
-    "npm-run-all": "^4.1.5"
+    "npm-run-all": "^4.1.5",
+    "typescript": "^4.9.4"
   },
   "bin": {
-    "parse-log": "./dist/index.js"
+    "parse-log": "./bin/index.js"
   },
   "repository": {
     "type": "git",
