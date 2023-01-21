@@ -19,18 +19,17 @@ export function processLine(params: ProcessLineParams): void {
   urlMap.set(url, (urlMap.get(url) || 0) + 1);
 }
 
-export function displayTopNResults(n: number, ...maps: Map<string, number>[]) {
-  [...maps].forEach((map) => {
+export function generateReports(n: number, ...maps: Map<string, number>[]): string[] {
+  return [...maps].map((map) => {
     const topN = [...map.entries()].sort((a, b) => b[1] - a[1]).slice(0, n);
+    let report = '';
 
-    console.log(chalk.bold.green(`Top ${n <= map.size ? n : map.size} out of ${map.size} results`));
-    console.log(chalk.bold.green('-------------------------------'));
+    report += chalk.bold.green(`Top ${n <= map.size ? n : map.size} out of ${map.size} results`);
+    report += chalk.bold.green('\n-------------------------------\n');
+    report += topN.map(([key, value], index) => `${chalk.bold.yellow(index + 1)}. ${chalk.bold.cyan(key)} -- ${chalk.bold.magenta(`count = ${value}`)}`).join('\n');
+    report += '\n';
 
-    topN.forEach(([key, value], index) => {
-      console.log(`${chalk.bold.yellow(index + 1)}. ${chalk.bold.cyan(key)} -- ${chalk.bold.magenta(`count = ${value}`)}`);
-    });
-
-    console.log('');
+    return report;
   });
 }
 
@@ -49,7 +48,8 @@ export async function processLineByLine(filePath: string, n: number) {
 
     await once(rl, 'close');
 
-    displayTopNResults(n, ipMap, urlMap);
+    const reports = generateReports(n, ipMap, urlMap);
+    reports.forEach((report) => console.log(report));
   } catch (error) {
     console.error(error);
   }

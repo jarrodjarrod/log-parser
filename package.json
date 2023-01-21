@@ -6,15 +6,16 @@
   "main": "bin/index.js",
   "scripts": {
     "build": "tsc",
-    "clean": "rm -rf ./dist",
+    "clean": "rm -rf ./bin",
     "build:clean": "npm-run-all --silent clean build",
-    "example": "node ./dist/index.js --file ./fixtures/example.log",
+    "example": "node ./bin/index.js --file ./fixtures/example.log",
     "test": "vitest ./src/*"
   },
   "author": "Jarrod Membrey",
   "license": "MIT",
   "dependencies": {
     "chalk": "^5.2.0",
+    "strip-ansi": "^7.0.1",
     "vitest": "^0.27.2",
     "yargs": "^17.6.2"
   },
