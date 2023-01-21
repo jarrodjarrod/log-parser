@@ -1,3 +1,5 @@
+/* eslint-disable import/no-unresolved */
+/* eslint-disable import/extensions */
 import { describe, expect, test } from 'vitest';
 import { processLine } from './helpers';
 

@@ -9,14 +9,14 @@
     "clean": "rm -rf ./dist",
     "build:clean": "npm-run-all --silent clean build",
     "example": "node ./dist/index.js --file ./fixtures/example.log",
-    "test": "vitest"
+    "test": "vitest ./src/*"
   },
   "author": "Jarrod Membrey",
   "license": "MIT",
   "dependencies": {
     "chalk": "^5.2.0",
-    "yargs": "^17.6.2",
-    "vitest": "^0.27.2"
+    "vitest": "^0.27.2",
+    "yargs": "^17.6.2"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
