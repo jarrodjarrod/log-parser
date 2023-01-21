@@ -1,6 +1,6 @@
 {
   "name": "@code-slice/log-parser",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "A CLI tool for analysing the IPs and URLs that appear in HTTP log files",
   "type": "module",
   "main": "bin/index.js",
