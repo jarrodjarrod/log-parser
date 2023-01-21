@@ -24,7 +24,7 @@ export function generateReports(n: number, ...maps: Map<string, number>[]): stri
     const topN = [...map.entries()].sort((a, b) => b[1] - a[1]).slice(0, n);
     let report = '';
 
-    report += chalk.bold.green(`Top ${n <= map.size ? n : map.size} out of ${map.size} results`);
+    report += chalk.bold.green(`\nTop ${n <= map.size ? n : map.size} out of ${map.size} results`);
     report += chalk.bold.green('\n-------------------------------\n');
     report += topN.map(([key, value], index) => `${chalk.bold.yellow(index + 1)}. ${chalk.bold.cyan(key)} -- ${chalk.bold.magenta(`count = ${value}`)}`).join('\n');
     report += '\n';
