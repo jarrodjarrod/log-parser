@@ -4,11 +4,11 @@ This is a command line interface (CLI) for getting a couple simple but useful me
 
 ## Installation
 
-npm install -g @code-slice/log-parser
+`npm install -g @code-slice/log-parser`
 
 ## Usage
 
-parse-log -f <file> -t <top>
+`parse-log -f <file> -t <top>`
 
 **HINT**: Use `npx @code-slice/log-parser -f <file> -t <top>` to execute the package without installing.
 
@@ -19,7 +19,7 @@ The tool will output the top IP addresses and URLs from the log file, along with
 
 ## Example
 
-parse-log -f access.log -t 5
+`parse-log -f access.log -t 5`
 
 
 This will parse the `access.log` file and display the top 5 IP addresses and URLs that were recorded, along with a count of their occurrences.
