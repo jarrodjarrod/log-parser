@@ -4,18 +4,18 @@ This is a command line interface (CLI) for getting a couple simple but useful me
 
 ## Installation
 
-npm install <package-name>
+npm install -g @code-slice/log-parser
 
 ## Usage
 
 parse-log -f <file> -t <top>
 
+**HINT**: Use `npx @code-slice/log-parser -f <file> -t <top>` to execute the package without installing.
+
 - `-f, --file`: The HTTP log file to parse. This option is required.
 - `-t, --top`: The number of top results to display. This option is optional, and the default value is 3.
 
 The tool will output the top IP addresses and URLs from the log file, along with the number of times they appear in the log.
-
-HINT: Use `npx @code-slice/log-parser -f <file> -t <top>` to execute the package without installing.
 
 ## Example
 
