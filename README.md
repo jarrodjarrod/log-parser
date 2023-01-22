@@ -42,3 +42,13 @@ Top 5 out of 22 results
 4. /this/page/does/not/exist/ -- count = 1
 5. http://example.net/blog/category/meta/ -- count = 1
 ````
+
+## Assumptions
+- The log format is going to be either the Common Log Format or Combined Log Format
+- The top results won't include "draws"
+
+## Improvements
+- Add the ability to handle multiple files
+- Allow for different log formats, although this likely requires regular expressions which would slow performance
+- Allow for the user to decide what parameters they would like to analyse from the logs
+- More test coverage

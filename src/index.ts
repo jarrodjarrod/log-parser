@@ -1,14 +1,11 @@
 #!/usr/bin/env node
-/* eslint-disable import/no-unresolved */
-/* eslint-disable import/extensions */
-
-import { resolve } from 'path';
+import { join } from 'path';
 import { hideBin } from 'yargs/helpers';
 import yargs from 'yargs/yargs';
 import { processLineByLine } from './helpers.js';
 
 const { f, t } = yargs(hideBin(process.argv))
-  .usage('Usage: -f <file>')
+  .usage('Usage: $0 -f <file> -t <top>')
   .options({
     f: {
       alias: 'file',
@@ -26,6 +23,6 @@ const { f, t } = yargs(hideBin(process.argv))
   })
   .parseSync();
 
-const file = resolve(process.cwd(), f);
+const file = join(process.cwd(), f);
 
 processLineByLine(file, t);
